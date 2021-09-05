@@ -1,0 +1,22 @@
+Monsters
+
+1 - Zombie
+    ID: 1
+    Name: Zombi
+    Health: 10
+    Damage: 3
+    Money: 4
+
+2 - Vampire
+    ID: 2
+    Name: Vampir
+    Health: 14
+    Damage: 4
+    Money: 7
+
+3 - Bear
+    ID: 3
+    Name: Ayı
+    Health: 20
+    Damage: 7
+    Money: 12

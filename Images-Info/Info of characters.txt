@@ -1,0 +1,22 @@
+Characters
+
+1 - Samurai
+    ID: 1
+    Name: Samuray
+    Health: 21
+    Damage: 5
+    Money: 15
+
+2 - Archer
+    ID: 2
+    Name: Okçu
+    Health: 18
+    Damage: 7
+    Money: 20
+
+3 - Knight
+    ID: 3
+    Name: Şövalye
+    Health: 24
+    Damage: 8
+    Money: 5
