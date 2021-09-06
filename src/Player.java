@@ -79,7 +79,7 @@ public class Player {
                             ",\t Para: "+g.getMoney()
             );
         }
-        System.out.println("#####################################################################");
+        System.out.println("######################################################################");
     }
 
     public void selectCharacter(){
