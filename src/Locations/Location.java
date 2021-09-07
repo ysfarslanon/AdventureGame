@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public  abstract class Location {
     private String name;
-    private static Scanner input=new Scanner(System.in);
+    protected static Scanner input=new Scanner(System.in);
     private Player player;
 
     public abstract boolean onLocation();
