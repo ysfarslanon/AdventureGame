@@ -106,4 +106,12 @@ public class Player {
         }
     }
 
+    public void printInfoPlayer(){
+        System.out.println(
+                "Sağlığın: "+this.getHealth()+
+                "Hasarın: "+this.getDamage()+
+                "Paran: "+this.getMoney()
+        );
+    }
+
 }
