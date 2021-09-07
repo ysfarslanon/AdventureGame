@@ -1,5 +1,9 @@
 package Source;
 
+import Locations.Location;
+import Locations.SafeLocations.SafeHouse;
+import Locations.SafeLocations.Store;
+
 import java.util.Scanner;
 
 public  class Game {
@@ -11,5 +15,40 @@ public  class Game {
         System.out.println("\nSelam "+nickname+". Hadi devam edelim. Şimdi bir karakter seçmen gerekiyor");
         Player player=new Player(nickname);
         player.selectCharacter();
+
+        Location location=null;
+        while(true){
+
+            System.out.println("\n########### Mekanlar ###########");
+            System.out.println("0 - Gerçek dünya");
+            System.out.println("1 - Güvenli ev (Burada yaralar sarılır ve iyileşirsin.)");
+            System.out.println("2 - Mağaza (Burada kendini geliştirebileceğin aletler bulabilirsin.)");
+            System.out.print("Yolculuk nereye: ");
+            int selectLocation=input.nextInt();
+            switch (selectLocation){
+                case 0:
+                    location=null;
+                    break;
+                case 1:
+                    location=new SafeHouse(player);
+                    break;
+                case 2:
+                    location=new Store(player);
+                    break;
+                default:
+                    System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
+                    break;
+            }
+
+            if (location == null) {
+                System.out.println("Tekrar görüşmek üzere");
+                break;
+            }
+
+            if (!location.onLocation()){
+                System.out.println("Öldün");
+                break;
+            }
+        }
     }
 }

@@ -71,7 +71,7 @@ public class Player {
 
     public void printCharacters(){
         GameCharacter[] listCharacters={new Samurai(),new Archer(),new Knight()};
-        System.out.println("############################# KARAKTERLER #############################");
+        System.out.println("\n############################# KARAKTERLER #############################");
         for (GameCharacter g:listCharacters ) {
             System.out.println(
                     "ID: "+g.getID()+
@@ -89,7 +89,7 @@ public class Player {
         System.out.print("Hangi karakteri seçiyorsun: ");
         int selectedCharacter=input.nextInt();
         while (selectedCharacter<0 || selectedCharacter>3){
-            System.out.print("Yanlış seçim:");
+            System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
             selectedCharacter=input.nextInt();
         }
         switch (selectedCharacter){
@@ -109,8 +109,8 @@ public class Player {
     public void printInfoPlayer(){
         System.out.println(
                 "Sağlığın: "+this.getHealth()+
-                "Hasarın: "+this.getDamage()+
-                "Paran: "+this.getMoney()
+                ", Hasarın: "+this.getDamage()+
+                ", Paran: "+this.getMoney()
         );
     }
 
