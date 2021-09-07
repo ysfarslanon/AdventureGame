@@ -1,22 +1,19 @@
-package Locations;
 
-public abstract class Location {
-    private int ID;
+package Locations;
+import Source.Player;
+
+import java.util.Scanner;
+
+public  abstract class Location {
     private String name;
+    private static Scanner input=new Scanner(System.in);
+    private Player player;
 
     public abstract boolean onLocation();
 
-    public Location(int ID, String name) {
-        this.ID = ID;
+    public Location(String name,Player player) {
         this.name = name;
-    }
-
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
+        this.player=player;
     }
 
     public String getName() {
@@ -25,5 +22,13 @@ public abstract class Location {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 }

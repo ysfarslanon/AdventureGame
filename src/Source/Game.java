@@ -1,6 +1,8 @@
+package Source;
+
 import java.util.Scanner;
 
-public class Game {
+public  class Game {
     private static Scanner input=new Scanner(System.in);
     public static void start(){
         System.out.println("Metin tabanlı macera oyununa hoşgeldin");

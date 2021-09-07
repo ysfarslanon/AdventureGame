@@ -1,3 +1,5 @@
+package Source;
+
 import Characters.Archer;
 import Characters.GameCharacter;
 import Characters.Knight;
