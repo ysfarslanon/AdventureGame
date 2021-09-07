@@ -2,7 +2,7 @@ package Locations;
 
 import Source.Player;
 
-public class NormalLocation extends Location{
+public abstract class NormalLocation extends Location{
 
     public NormalLocation(String name, Player player) {
         super(name, player);
