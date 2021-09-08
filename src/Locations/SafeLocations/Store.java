@@ -1,5 +1,6 @@
 package Locations.SafeLocations;
 
+import Items.Weapon;
 import Locations.Location;
 import Locations.NormalLocation;
 import Source.Player;
@@ -27,11 +28,22 @@ public class Store extends NormalLocation {
                     System.out.println("Tekrar uğraman dileğiyle....");
                     showMenu=false;
                     break;
+                case 1:
+                    printWeapons();
+                    break;
             }
 
         }
 
 
         return  true;
+    }
+
+    public void printWeapons(){
+        System.out.println("\n######### SİLAHLAR #########");
+        for (Weapon w: Weapon.weapons()) {
+            System.out.println("ID: "+w.getID()+" - "+w.getName()+", Hasar: "+w.getDamage()+", Fiyat: "+w.getPrice());
+        }
+        System.out.println("\n############################");
     }
 }
