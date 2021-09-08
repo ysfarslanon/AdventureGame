@@ -1,0 +1,16 @@
+Weapons
+
+1 - Tabanca
+    ID:1
+    Damage:2
+    Price:25
+
+2 - Kılıç
+    ID:2
+    Damage:3
+    Price:35
+
+3 - Tüfek
+    ID:3
+    Damage:7
+    Price:45
