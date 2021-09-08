@@ -1,0 +1,16 @@
+Armors
+
+1 - Hafif
+    ID:1
+    Block:1
+    Price:15
+
+2 - Orta
+    ID:2
+    Block:3
+    Price:25
+
+3 - Ağır
+    ID:3
+    Block:5
+    Price:40
