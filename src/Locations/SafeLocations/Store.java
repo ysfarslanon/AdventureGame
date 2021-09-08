@@ -30,6 +30,7 @@ public class Store extends NormalLocation {
                     break;
                 case 1:
                     printWeapons();
+                    buyWeapon();
                     break;
             }
 
@@ -45,5 +46,16 @@ public class Store extends NormalLocation {
             System.out.println("ID: "+w.getID()+" - "+w.getName()+", Hasar: "+w.getDamage()+", Fiyat: "+w.getPrice());
         }
         System.out.println("\n############################");
+    }
+
+    public void buyWeapon(){
+        System.out.print("Silah seçimi: ");
+        int selectedWeaponID=input.nextInt();
+        while (selectedWeaponID<0 || selectedWeaponID>Weapon.weapons().length){
+            System.out.print("Geçersiz değer girdin. Lütfen tekrar dener misin? ");
+            selectedWeaponID= input.nextInt();
+        }
+
+
     }
 }
