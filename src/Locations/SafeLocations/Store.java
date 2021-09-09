@@ -36,16 +36,16 @@ public class Store extends NormalLocation {
 
         }
 
-
         return  true;
     }
 
     public void printWeapons(){
         System.out.println("\n######### SİLAHLAR #########");
+        System.out.println("0 - Çıkış");
         for (Weapon w: Weapon.weapons()) {
             System.out.println("ID: "+w.getID()+" - "+w.getName()+", Hasar: "+w.getDamage()+", Fiyat: "+w.getPrice());
         }
-        System.out.println("\n############################");
+        System.out.println("############################");
     }
 
     public void buyWeapon(){
@@ -56,6 +56,24 @@ public class Store extends NormalLocation {
             selectedWeaponID= input.nextInt();
         }
 
+        if (selectedWeaponID != 0) {
+            Weapon selectedWeapon=Weapon.getWeaponObjectByID(selectedWeaponID);
+            if (selectedWeapon != null) {
+                if (this.getPlayer().getMoney() >= selectedWeapon.getPrice()) {
+                    //Silah satın alma bölümü
+                    int balance=this.getPlayer().getMoney()-selectedWeapon.getPrice();
+                    this.getPlayer().setMoney(balance);
+                    this.getPlayer().getInventory().setWeapon(selectedWeapon);
+                    System.out.println(selectedWeapon.getName().toUpperCase()+" silahını aldınız.");
+                    System.out.println("Kalan paranız: "+this.getPlayer().getMoney()+"\n1");
+                }else{
+                    System.out.println("\nYetersiz bakiye");
+                }//if3
+            }//if2
+        }//if1
 
-    }
+
+    }//buyWeapon
+
+
 }
