@@ -4,6 +4,7 @@ import Characters.Archer;
 import Characters.GameCharacter;
 import Characters.Knight;
 import Characters.Samurai;
+import Items.Weapon;
 
 import java.util.Scanner;
 
@@ -13,10 +14,13 @@ public class Player {
     private int health;
     private int damage;
     private int money;
+    private Inventory inventory;
     private static Scanner input=new Scanner(System.in);
+
 
     public Player(String name) {
         this.name = name;
+        this.inventory=new Inventory();
     }
 
     public int getID() {
@@ -59,6 +63,14 @@ public class Player {
         this.money = money;
     }
 
+    public Inventory getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Inventory inventory) {
+        this.inventory = inventory;
+    }
+
 
     public void initialPlayer(GameCharacter gameCharacter){
        this.setID(gameCharacter.getID());
@@ -92,6 +104,7 @@ public class Player {
             System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
             selectedCharacter=input.nextInt();
         }
+
         switch (selectedCharacter){
             case 1:
                 initialPlayer(new Samurai());
@@ -102,14 +115,17 @@ public class Player {
             case 3:
                 initialPlayer(new Knight());
                 break;
-
         }
+
     }
 
     public void printInfoPlayer(){
         System.out.println(
                 "Sağlığın: "+this.getHealth()+
+                ", Silahın: "+this.getInventory().getWeapon().getName()+
                 ", Hasarın: "+this.getDamage()+
+                ", Zırhın: "+this.getInventory().getArmor().getName()+
+                ", Engelleme: "+this.getInventory().getArmor().getBlock()+
                 ", Paran: "+this.getMoney()
         );
     }
