@@ -1,5 +1,6 @@
 package Locations.SafeLocations;
 
+import Items.Armor;
 import Items.Weapon;
 import Locations.Location;
 import Locations.NormalLocation;
@@ -31,6 +32,9 @@ public class Store extends NormalLocation {
                 case 1:
                     printWeapons();
                     buyWeapon();
+                    break;
+                case 2:
+                    printArmors();
                     break;
             }
 
@@ -74,6 +78,15 @@ public class Store extends NormalLocation {
 
 
     }//buyWeapon
+
+    public void printArmors(){
+        System.out.println("\n######### ZIRHLAR #########");
+        System.out.println("0 - Çıkış");
+        for (Armor a: Armor.armors()) {
+            System.out.println("ID: "+a.getID()+" - "+a.getName()+", Engelleme: "+a.getBlock()+", Fiyat: "+a.getPrice());
+        }
+        System.out.println("############################");
+    }
 
 
 }
