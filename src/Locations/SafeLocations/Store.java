@@ -35,6 +35,7 @@ public class Store extends NormalLocation {
                     break;
                 case 2:
                     printArmors();
+                    buyArmor();
                     break;
             }
 
@@ -69,9 +70,11 @@ public class Store extends NormalLocation {
                     this.getPlayer().setMoney(balance);
                     this.getPlayer().getInventory().setWeapon(selectedWeapon);
                     System.out.println(selectedWeapon.getName().toUpperCase()+" silahını aldınız.");
-                    System.out.println("Kalan paranız: "+this.getPlayer().getMoney()+"\n1");
+                    System.out.println("Kalan paranız: "+this.getPlayer().getMoney()+"\n");
+
                 }else{
                     System.out.println("\nYetersiz bakiye");
+
                 }//if3
             }//if2
         }//if1
@@ -87,6 +90,33 @@ public class Store extends NormalLocation {
         }
         System.out.println("############################");
     }
+
+    public void buyArmor(){
+        System.out.println("Zırh seçimi: ");
+        int selectedArmorID= input.nextInt();
+        while (selectedArmorID<0 || selectedArmorID >Armor.armors().length){
+            System.out.print("Geçersiz değer girdin. Lütfen tekrar dener misin? ");
+            selectedArmorID= input.nextInt();
+        }
+
+        if (selectedArmorID!=0){
+            Armor selectedArmor=Armor.getArmorObjectByID(selectedArmorID);
+            if (selectedArmor != null){
+               if (this.getPlayer().getMoney()>=selectedArmor.getPrice()){
+                   //Satın alma
+                   int balance=this.getPlayer().getMoney()-selectedArmor.getPrice();
+                   this.getPlayer().setMoney(balance);
+                   this.getPlayer().getInventory().setArmor(selectedArmor);
+                   System.out.println(selectedArmor.getName().toUpperCase() +" zırhını aldınız.");
+                   System.out.println("Kalan paranız: "+this.getPlayer().getMoney()+"\n");
+
+               }else{
+                   System.out.println("\nYetersiz bakiye");
+
+               }
+            }
+        }
+    }//buyArmor
 
 
 }
