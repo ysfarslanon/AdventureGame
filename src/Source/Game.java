@@ -1,5 +1,8 @@
 package Source;
 
+import Locations.BattleLocations.Cave;
+import Locations.BattleLocations.Forest;
+import Locations.BattleLocations.River;
 import Locations.Location;
 import Locations.SafeLocations.SafeHouse;
 import Locations.SafeLocations.Store;
@@ -23,6 +26,9 @@ public  class Game {
             System.out.println("0 - Gerçek dünya");
             System.out.println("1 - Güvenli ev (Burada yaralar sarılır ve iyileşirsin.)");
             System.out.println("2 - Mağaza (Burada kendini geliştirebileceğin aletler bulabilirsin.)");
+            System.out.println("3 - Mağara (Zombilerin yer aldığını ıssız ve karanlık mekan. ÖDÜL:YEMEK)");
+            System.out.println("4 - Orman (Vampirlerin dolaştığını mekan. ÖDÜL:ODUN)");
+            System.out.println("5 - Nehir (Ayıların koruduğu kutsal bir mekan. ÖDÜL:SU)");
             System.out.print("Yolculuk nereye: ");
             int selectLocation=input.nextInt();
             switch (selectLocation){
@@ -34,6 +40,15 @@ public  class Game {
                     break;
                 case 2:
                     location=new Store(player);
+                    break;
+                case 3:
+                    location=new Cave(player);
+                    break;
+                case 4:
+                    location=new Forest(player);
+                    break;
+                case 5:
+                    location=new River(player);
                     break;
                 default:
                     System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
