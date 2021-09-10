@@ -1,9 +1,9 @@
 package Locations.SafeLocations;
 
-import Locations.NormalLocation;
+import Locations.SafeLocation;
 import Source.Player;
 
-public class SafeHouse extends NormalLocation {
+public class SafeHouse extends SafeLocation {
 
     public SafeHouse(Player player) {
         super("Güvenli ev", player);

@@ -3,10 +3,10 @@ package Locations.SafeLocations;
 import Items.Armor;
 import Items.Weapon;
 import Locations.Location;
-import Locations.NormalLocation;
+import Locations.SafeLocation;
 import Source.Player;
 
-public class Store extends NormalLocation {
+public class Store extends SafeLocation {
     public Store(Player player) {
         super("Mağaza", player);
     }
