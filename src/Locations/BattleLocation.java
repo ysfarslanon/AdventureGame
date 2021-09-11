@@ -3,6 +3,8 @@ package Locations;
 import Enemies.Enemy;
 import Source.Player;
 
+import java.util.Random;
+
 public abstract class BattleLocation extends Location{
     private Enemy enemy;
     private String award;
@@ -14,11 +16,6 @@ public abstract class BattleLocation extends Location{
         this.enemy=enemy;
         this.award=award;
         this.maxEnemy=maxEnemy;
-    }
-
-    @Override
-    public boolean onLocation() {
-        return false;
     }
 
     public Enemy getEnemy() {
@@ -44,4 +41,33 @@ public abstract class BattleLocation extends Location{
     public void setMaxEnemy(int maxEnemy) {
         this.maxEnemy = maxEnemy;
     }
+
+    @Override
+    public boolean onLocation() {
+        return false;
+    }
+
+    public boolean combat(){
+
+        return false;
+    }
+
+    public void printPlayerStats(){
+
+    }
+
+    public void  printEnemyStats(){
+
+    }
+
+    public void afterHit(){
+
+    }
+
+    public int randomObstacleNumber(){
+        Random random=new Random();
+        return random.nextInt(this.getMaxEnemy())+1;
+    }
+
+
 }
