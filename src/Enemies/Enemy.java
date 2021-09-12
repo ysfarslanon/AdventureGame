@@ -6,12 +6,14 @@ public class Enemy {
     private int health;
     private int originalHealth;
     private int damage;
+    private String award;
 
-    public Enemy(int ID, String name, int health, int damage) {
+    public Enemy(int ID, String name, int health, int damage, String award) {
         this.ID = ID;
         this.name = name;
         this.health = health;
         this.damage = damage;
+        this.award=award;
     }
 
     public int getID() {
@@ -53,5 +55,13 @@ public class Enemy {
 
     public void setOriginalHealth(int originalHealth) {
         this.originalHealth = originalHealth;
+    }
+
+    public String getAward() {
+        return award;
+    }
+
+    public void setAward(String award) {
+        this.award = award;
     }
 }
