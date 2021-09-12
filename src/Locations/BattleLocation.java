@@ -64,7 +64,10 @@ public abstract class BattleLocation extends Location{
     }
 
     public void  printEnemyStats(int enemyNumber){
-
+        System.out.println("############## DÜŞMAN DEĞERLERİ ##############");
+        System.out.println(enemyNumber+". "+this.getEnemy().getName());
+        System.out.println("Sağlık: "+this.getEnemy().getHealth());
+        System.out.println("Hasar: "+this.getEnemy().getDamage());
     }
 
     public void afterHit(){
