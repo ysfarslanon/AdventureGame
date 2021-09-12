@@ -4,6 +4,7 @@ public class Enemy {
     private int ID;
     private String name;
     private int health;
+    private int originalHealth;
     private int damage;
 
     public Enemy(int ID, String name, int health, int damage) {
@@ -34,6 +35,7 @@ public class Enemy {
     }
 
     public void setHealth(int health) {
+        if (this.getHealth()<=0) this.setHealth(0);
         this.health = health;
     }
 
@@ -43,5 +45,13 @@ public class Enemy {
 
     public void setDamage(int damage) {
         this.damage = damage;
+    }
+
+    public int getOriginalHealth() {
+        return originalHealth;
+    }
+
+    public void setOriginalHealth(int originalHealth) {
+        this.originalHealth = originalHealth;
     }
 }

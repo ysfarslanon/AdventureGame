@@ -12,6 +12,7 @@ public class Player {
     private int ID;
     private String name;
     private int health;
+    private int originalHealth;
     private int damage;
     private int money;
     private Inventory inventory;
@@ -44,6 +45,7 @@ public class Player {
     }
 
     public void setHealth(int health) {
+        if (this.getHealth()<=0) this.setHealth(0);
         this.health = health;
     }
 
@@ -71,6 +73,13 @@ public class Player {
         this.inventory = inventory;
     }
 
+    public int getOriginalHealth() {
+        return originalHealth;
+    }
+
+    public void setOriginalHealth(int originalHealth) {
+        this.originalHealth = originalHealth;
+    }
 
     public void initialPlayer(GameCharacter gameCharacter){
        this.setID(gameCharacter.getID());
