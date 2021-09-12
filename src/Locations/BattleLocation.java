@@ -3,6 +3,7 @@ package Locations;
 import Enemies.Enemy;
 import Source.Player;
 
+import java.sql.SQLOutput;
 import java.util.Random;
 
 public abstract class BattleLocation extends Location{
@@ -53,10 +54,16 @@ public abstract class BattleLocation extends Location{
     }
 
     public void printPlayerStats(){
-
+        System.out.println("############## OYUNCU DEĞERLERİ ##############");
+        System.out.println("Sağlık: "+this.getPlayer().getHealth());
+        System.out.println("Silah: "+this.getPlayer().getInventory().getWeapon().getName());
+        System.out.println("Hasar: "+this.getPlayer().getDamage());
+        System.out.println("Zırh: "+this.getPlayer().getInventory().getArmor().getName());
+        System.out.println("Engelleme: "+this.getPlayer().getInventory().getArmor().getBlock());
+        System.out.println("Para: "+this.getPlayer().getMoney());
     }
 
-    public void  printEnemyStats(){
+    public void  printEnemyStats(int enemyNumber){
 
     }
 
