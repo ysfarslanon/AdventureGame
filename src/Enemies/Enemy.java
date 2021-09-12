@@ -6,9 +6,9 @@ public class Enemy {
     private int health;
     private int originalHealth;
     private int damage;
-    private String award;
+    private int award;
 
-    public Enemy(int ID, String name, int health, int damage, String award) {
+    public Enemy(int ID, String name, int health, int damage, int award) {
         this.ID = ID;
         this.name = name;
         this.health = health;
@@ -57,11 +57,11 @@ public class Enemy {
         this.originalHealth = originalHealth;
     }
 
-    public String getAward() {
+    public int getAward() {
         return award;
     }
 
-    public void setAward(String award) {
+    public void setAward(int award) {
         this.award = award;
     }
 }
