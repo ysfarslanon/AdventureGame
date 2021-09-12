@@ -57,6 +57,8 @@ public class Player {
         this.damage = damage;
     }
 
+    public int getTotalDamage(){return damage+this.getInventory().getWeapon().getDamage();}
+
     public int getMoney() {
         return money;
     }
@@ -132,7 +134,7 @@ public class Player {
         System.out.println(
                 "Sağlığın: "+this.getHealth()+
                 ", Silahın: "+this.getInventory().getWeapon().getName()+
-                ", Hasarın: "+this.getDamage()+
+                ", Hasarın: "+this.getTotalDamage()+
                 ", Zırhın: "+this.getInventory().getArmor().getName()+
                 ", Engelleme: "+this.getInventory().getArmor().getBlock()+
                 ", Paran: "+this.getMoney()
