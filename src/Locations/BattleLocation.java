@@ -71,7 +71,7 @@ public abstract class BattleLocation extends Location{
     }
 
     public void afterHit(){
-
+        System.out.println("Canın:"+this.getPlayer().getHealth()+"Düşman canı:"+this.getEnemy().getHealth());
     }
 
     public int randomObstacleNumber(){
