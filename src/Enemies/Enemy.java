@@ -11,7 +11,7 @@ public class Enemy {
     public Enemy(int ID, String name, int health, int damage, int money) {
         this.ID = ID;
         this.name = name;
-        this.health = health;
+        this.originalHealth = health;
         this.damage = damage;
         this.money=money;
     }
@@ -37,7 +37,7 @@ public class Enemy {
     }
 
     public void setHealth(int health) {
-        if (this.getHealth()<=0) this.setHealth(0);
+        if (health<=0) health=0;
         this.health = health;
     }
 

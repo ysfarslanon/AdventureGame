@@ -45,7 +45,7 @@ public class Player {
     }
 
     public void setHealth(int health) {
-        if (this.getHealth()<=0) this.setHealth(0);
+        if (health<0) health=0;
         this.health = health;
     }
 
@@ -86,6 +86,7 @@ public class Player {
     public void initialPlayer(GameCharacter gameCharacter){
        this.setID(gameCharacter.getID());
        this.setHealth(gameCharacter.getHealth());
+       this.setOriginalHealth(gameCharacter.getHealth());
        this.setDamage(gameCharacter.getDamage());
        this.setMoney(gameCharacter.getMoney());
         System.out.println("Seçtiğin karakter: "+gameCharacter.getName()+" ,Sağlık: "+gameCharacter.getHealth()+
