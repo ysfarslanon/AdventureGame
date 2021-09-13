@@ -12,7 +12,7 @@ public class SafeHouse extends SafeLocation {
     @Override
     public boolean onLocation(){
         System.out.println("Güvenli eve geldin. Burada yaralar sarılır ve iyileşirsin.");
-        //
+        this.getPlayer().setHealth(this.getPlayer().getOriginalHealth());
         return true;
     }
 }
