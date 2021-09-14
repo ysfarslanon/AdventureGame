@@ -21,7 +21,6 @@ public  class Game {
 
         Location location=null;
         while(true){
-
             System.out.println("\n########### Mekanlar ###########");
             System.out.println("0 - Gerçek dünya");
             System.out.println("1 - Güvenli ev (Burada yaralar sarılır ve iyileşirsin.)");

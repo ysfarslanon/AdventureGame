@@ -81,18 +81,25 @@ public abstract class BattleLocation extends Location{
                         //enemyTotalDamage=enemyTotalDamage < 0 ? 0 : enemyTotalDamage;//Düşmanın toplma hasarı eksi olunca oyuncu hasarı artmaması için
                         this.getPlayer().setHealth(this.getPlayer().getHealth()-enemyTotalDamage);
                         afterHit();
+
                     }// Düşmanın canı 0 dan büyükse vurabileceği için
                 }else{
                     return false;
                 }//IF selectCombatCase.equals("V")
             }//WHİLE
 
-            if (this.getEnemy().getHealth()<this.getPlayer().getHealth()){
+            if (this.getEnemy().getHealth()<this.getPlayer().getHealth()){//Düşman öldürme
                 System.out.println(i+". düşmanı yendin.");
                 System.out.println(this.getEnemy().getMoney()+" para kazandın.");
                 int balance=this.getPlayer().getMoney()+this.getEnemy().getMoney();
                 this.getPlayer().setMoney(balance);
                 System.out.println("Toplam paran: "+this.getPlayer().getMoney());
+                if(i==enemyNumber){//Bütün düşmanlar öldü
+                    System.out.println("\nBütün düşmanları alt ettin ve "+this.getAward().toUpperCase()+" ödülünü kazandın. Artık burası güvenli tekrar gelmene gerek kalmadı. Teşekkürler...");
+                    if(this.getEnemy().getName().equals("Zombi")) this.getPlayer().getInventory().setFood(true);
+                    if(this.getEnemy().getName().equals("Vampir")) this.getPlayer().getInventory().setFirewood(true);
+                    if(this.getEnemy().getName().equals("Ayı")) this.getPlayer().getInventory().setWater(true);
+                }//Bütün düşmanlar öldü
             }else{
                 return false;
             }// IF düşman öldürme
