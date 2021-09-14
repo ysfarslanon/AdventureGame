@@ -18,9 +18,9 @@ public  class Game {
         System.out.println("\nSelam "+nickname+". Hadi devam edelim. Şimdi bir karakter seçmen gerekiyor");
         Player player=new Player(nickname);
         player.selectCharacter();
-
         Location location=null;
         while(true){
+            System.out.println("Food: "+player.getInventory().isFood()+" Firewood: "+player.getInventory().isFirewood()+" Water: "+player.getInventory().isWater());
             System.out.println("\n########### Mekanlar ###########");
             System.out.println("0 - Gerçek dünya");
             System.out.println("1 - Güvenli ev (Burada yaralar sarılır ve iyileşirsin.)");
@@ -30,28 +30,26 @@ public  class Game {
             System.out.println("5 - Nehir (Ayıların koruduğu kutsal bir mekan. ÖDÜL:SU)");
             System.out.print("Yolculuk nereye: ");
             int selectLocation=input.nextInt();
-            switch (selectLocation){
-                case 0:
-                    location=null;
-                    break;
-                case 1:
-                    location=new SafeHouse(player);
-                    break;
-                case 2:
-                    location=new Store(player);
-                    break;
-                case 3:
-                    location=new Cave(player);
-                    break;
-                case 4:
-                    location=new Forest(player);
-                    break;
-                case 5:
-                    location=new River(player);
-                    break;
-                default:
-                    System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
-                    break;
+            while (selectLocation<0 || selectLocation>6){
+                System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
+                selectLocation= input.nextInt();
+            }
+
+            if (selectLocation == 0)
+                location = null;
+            else if(selectLocation==1 )
+                location=new SafeHouse(player);
+            else if(selectLocation==2)
+                location=new Store(player);
+            else if(selectLocation==3 && !player.getInventory().isFood())
+                location=new Cave(player);
+            else if(selectLocation==4 && !player.getInventory().isFirewood())
+                location=new Forest(player);
+            else if(selectLocation==5 && !player.getInventory().isWater())
+                location=new River(player);
+            else{
+                System.out.println("Burada düşman kalmadı... Güvenli eve yönlendiriliyorsun");
+                location=new SafeHouse(player);
             }
 
             if (location == null) {
