@@ -8,6 +8,7 @@ public abstract class BattleLocation extends Location{
     private Enemy enemy;
     private String award;
     private int maxEnemy;
+    private static Random random;
 
 
     public BattleLocation(String name, Player player,Enemy enemy,String award,int maxEnemy) {
@@ -15,6 +16,7 @@ public abstract class BattleLocation extends Location{
         this.enemy=enemy;
         this.award=award;
         this.maxEnemy=maxEnemy;
+        random=new Random();
     }
 
     public Enemy getEnemy() {
@@ -48,16 +50,13 @@ public abstract class BattleLocation extends Location{
         System.out.println("Bu bölgede "+enemyNumber+" tane "+this.getEnemy().getName()+" var. Hepsini öldürmen gerekiyor.");
         System.out.print("<S>avaş veya <K>aç: ");
         String selectCase=input.nextLine().toUpperCase();
-        if (selectCase.equals("S") ){
-            //System.out.println("SAVAŞ BAŞLIYOR");
-            combat(enemyNumber);
+        if (selectCase.equals("S") && combat(enemyNumber)){
             return true;
         }
         if (this.getPlayer().getHealth() <= 0) {
             System.out.println("DÜŞMAN SENİ ALT ETTİ.....");
             return false;
         }
-
         return true;
     }
 
@@ -70,44 +69,74 @@ public abstract class BattleLocation extends Location{
                 System.out.print("\n<V>ur veya <K>aç: ");
                 String selectCombatCase= input.nextLine().toUpperCase();
                 if (selectCombatCase.equals("V")) {
-                    System.out.println("VURDUN");
-                    int enemyHealth=this.getEnemy().getHealth()-this.getPlayer().getTotalDamage();
-                    this.getEnemy().setHealth(enemyHealth);
-                    afterHit();
-                    if (this.getEnemy().getHealth()>0) {
-                        System.out.println("\nCANAVAR VURDU");
-                        int enemyTotalDamage=this.getEnemy().getDamage()-this.getPlayer().getInventory().getArmor().getBlock();
-                        if(enemyTotalDamage<0) enemyTotalDamage=0;
-                        //enemyTotalDamage=enemyTotalDamage < 0 ? 0 : enemyTotalDamage;//Düşmanın toplma hasarı eksi olunca oyuncu hasarı artmaması için
-                        this.getPlayer().setHealth(this.getPlayer().getHealth()-enemyTotalDamage);
-                        afterHit();
-
-                    }// Düşmanın canı 0 dan büyükse vurabileceği için
+                    randomHit();
                 }else{
                     return false;
                 }//IF selectCombatCase.equals("V")
-            }//WHİLE
+            }//WHİLE player ve düşman canlı kaldıkca savaş devam edecektir.
 
             if (this.getEnemy().getHealth()<this.getPlayer().getHealth()){//Düşman öldürme
-                System.out.println(i+". düşmanı yendin.");
-                System.out.println(this.getEnemy().getMoney()+" para kazandın.");
-                int balance=this.getPlayer().getMoney()+this.getEnemy().getMoney();
-                this.getPlayer().setMoney(balance);
-                System.out.println("Toplam paran: "+this.getPlayer().getMoney());
-                if(i==enemyNumber){//Bütün düşmanlar öldü
-                    System.out.println("\nBütün düşmanları alt ettin ve "+this.getAward().toUpperCase()+" ödülünü kazandın. Artık burası güvenli tekrar gelmene gerek kalmadı. Teşekkürler...");
-                    if(this.getEnemy().getName().equals("Zombi")) this.getPlayer().getInventory().setFood(true);
-                    if(this.getEnemy().getName().equals("Vampir")) this.getPlayer().getInventory().setFirewood(true);
-                    if(this.getEnemy().getName().equals("Ayı")) this.getPlayer().getInventory().setWater(true);
-                }//Bütün düşmanlar öldü
+                defeatEnemy(i);
             }else{
                 return false;
-            }// IF düşman öldürme
+            }
 
+            defeatAllEnemy(i,enemyNumber);
 
         }//FOR
 
         return true;
+    }
+
+    public void playerHit(){
+        System.out.println("VURDUN");
+        int enemyHealth=this.getEnemy().getHealth()-this.getPlayer().getTotalDamage();
+        this.getEnemy().setHealth(enemyHealth);
+        afterHit();
+    }
+
+    public void enemyHit(){
+        System.out.println("CANAVAR VURDU");
+        int enemyTotalDamage=this.getEnemy().getDamage()-this.getPlayer().getInventory().getArmor().getBlock();
+        enemyTotalDamage= Math.max(enemyTotalDamage, 0);//Düşmanın toplma hasarı eksi olunca oyuncu canı artmaması için
+        this.getPlayer().setHealth(this.getPlayer().getHealth()-enemyTotalDamage);
+        afterHit();
+    }
+    public void afterHit(){
+        System.out.println("Canın: "+this.getPlayer().getHealth());
+        System.out.println("Düşman canı: "+this.getEnemy().getHealth());
+        System.out.println();
+    }
+
+    public void randomHit(){
+        int randomHit= random.nextInt(100);
+        //0-50 önce player vuracak sonra enemy vuracak.50-99 önce enemy vuracak sonra player
+        if (randomHit<50) {
+            playerHit();
+            enemyHit();
+        }else{
+            if (this.getEnemy().getHealth()>0) {// Düşmanın canı 0 dan büyükse vurabileceği için
+                enemyHit();
+                playerHit();
+            }
+        }
+    }
+    public void defeatEnemy(int enemyNumber){
+        System.out.println(enemyNumber+". düşmanı yendin.");
+        System.out.println(this.getEnemy().getMoney()+" para kazandın.");
+        int balance=this.getPlayer().getMoney()+this.getEnemy().getMoney();
+        this.getPlayer().setMoney(balance);
+        System.out.println("Toplam paran: "+this.getPlayer().getMoney());
+    }
+
+    public void defeatAllEnemy(int deadEnemy, int enemyNumber){
+        //Bütün düşmanları öldürünce location ödülünü kazanır.
+        if (deadEnemy == enemyNumber) {
+            System.out.println("\nBütün düşmanları alt ettin ve "+this.getAward().toUpperCase()+" ödülünü kazandın. Artık burası güvenli tekrar gelmene gerek kalmadı. Teşekkürler...");
+            if(this.getEnemy().getName().equals("Zombi")) this.getPlayer().getInventory().setFood(true);
+            if(this.getEnemy().getName().equals("Vampir")) this.getPlayer().getInventory().setFirewood(true);
+            if(this.getEnemy().getName().equals("Ayı")) this.getPlayer().getInventory().setWater(true);
+        }
     }
 
     public void printPlayerStats(){
@@ -121,24 +150,18 @@ public abstract class BattleLocation extends Location{
     }
 
     public void  printEnemyStats(int enemyNumber){
-        String enemyInfo=enemyNumber+". "+this.getEnemy().getName();
-        System.out.println("############## DÜŞMAN DEĞERLERİ ("+enemyInfo+") ##############");
+        System.out.println("############## DÜŞMAN DEĞERLERİ ##############");
         System.out.println(enemyNumber+". "+this.getEnemy().getName());
         System.out.println("Sağlık: "+this.getEnemy().getHealth());
         System.out.println("Hasar: "+this.getEnemy().getDamage());
         System.out.println("##############################################");
     }
 
-    public void afterHit(){
-        System.out.println("Canın: "+this.getPlayer().getHealth());
-        System.out.println("Düşman canı: "+this.getEnemy().getHealth());
-
-    }
-
     public int randomObstacleNumber(){
-        Random random=new Random();
         return random.nextInt(this.getMaxEnemy())+1;
     }
+
+
 
 
 }
