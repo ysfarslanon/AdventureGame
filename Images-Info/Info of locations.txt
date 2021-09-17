@@ -39,4 +39,4 @@ Locations
                     5 para kazanma ihtimali: %30
                     1 para kazanma ihtimali: %50
 
-                Hiç birşey kazanmama ihtimali: %45
+                Hiçbir şey kazanmama ihtimali: %45
