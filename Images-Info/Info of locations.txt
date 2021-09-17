@@ -17,5 +17,26 @@ Locations
           Ödül: Firewood (Odun) kazanılır.
 
     1.3 - River (Nehir)
-          Özellik: 1- 3 adet Bear oluşur.
+          Özellik: 1 - 3 adet Bear oluşur.
           Ödül: Water (Su) kazanılır.
+
+    1.4 - Mine (Maden)
+          Özellik: 1 - 5 adet Snake oluşur.
+          Ödül: Silah, Zırh, Para veya hiçbir şey kazanma ihtimali
+
+                Silah kazanma ihtimali: %15
+                    Tüfek kazanma ihtimali: %20
+                    Kılıç kazanma ihtimali: %30
+                    Tabanca kazanma ihtimali: %50
+
+                Zırh kazanma ihtimali: %15
+                    Ağır zırh kazanma ihtimali: %20
+                    Orta zırh kazanma ihtimali: %30
+                    Haif zırh kazanma ihtimali: %50
+
+                Para kazanma ihtimali: %25
+                    10 para kazanma ihtimali: %20
+                    5 para kazanma ihtimali: %30
+                    1 para kazanma ihtimali: %50
+
+                Hiç birşey kazanmama ihtimali: %45
