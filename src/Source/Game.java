@@ -2,6 +2,7 @@ package Source;
 
 import Locations.BattleLocations.Cave;
 import Locations.BattleLocations.Forest;
+import Locations.BattleLocations.Mine;
 import Locations.BattleLocations.River;
 import Locations.Location;
 import Locations.SafeLocations.SafeHouse;
@@ -27,6 +28,7 @@ public  class Game {
         System.out.println("3 - Mağara (Zombilerin yer aldığını ıssız ve karanlık mekan. ÖDÜL:YEMEK)");
         System.out.println("4 - Orman (Vampirlerin dolaştığını mekan. ÖDÜL:ODUN)");
         System.out.println("5 - Nehir (Ayıların koruduğu kutsal bir mekan. ÖDÜL:SU)");
+        System.out.println("6 - Maden (Her bir yılanı alt ettiğinde silah, zırh, para veya hiçbir şey kazanamama şansın olan bir mekan.)");
     }
     public static void start(){
         Player player=new Player(login());
@@ -36,7 +38,7 @@ public  class Game {
             menu();
             System.out.print("Yolculuk nereye: ");
             int selectLocation=input.nextInt();
-            while (selectLocation<0 || selectLocation>6){
+            while (selectLocation<0 || selectLocation>7){
                 System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
                 selectLocation= input.nextInt();
             }
@@ -53,6 +55,8 @@ public  class Game {
                 location=new Forest(player);
             else if(selectLocation==5 && !player.getInventory().isWater())
                 location=new River(player);
+            else if(selectLocation==6)
+                location=new Mine(player);
             else{
                 System.out.println("Burada düşman kalmadı... Güvenli eve yönlendiriliyorsun");
                 location=new SafeHouse(player);

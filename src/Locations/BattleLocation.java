@@ -19,6 +19,15 @@ public abstract class BattleLocation extends Location{
         random=new Random();
     }
 
+
+
+    public BattleLocation(String name, Player player, Enemy enemy, int maxEnemy) {
+        super(name, player);
+        this.enemy=enemy;
+        this.maxEnemy=maxEnemy;
+        random=new Random();
+    }
+
     public Enemy getEnemy() {
         return enemy;
     }
@@ -41,6 +50,10 @@ public abstract class BattleLocation extends Location{
 
     public void setMaxEnemy(int maxEnemy) {
         this.maxEnemy = maxEnemy;
+    }
+
+    public static Random getRandom() {
+        return random;
     }
 
     @Override
@@ -131,7 +144,7 @@ public abstract class BattleLocation extends Location{
 
     public void defeatAllEnemy(int deadEnemy, int enemyNumber){
         //Bütün düşmanları öldürünce location ödülünü kazanır.
-        if (deadEnemy == enemyNumber) {
+        if (deadEnemy == enemyNumber && this.getAward() != null) {
             System.out.println("\nBütün düşmanları alt ettin ve "+this.getAward().toUpperCase()+" ödülünü kazandın. Artık burası güvenli tekrar gelmene gerek kalmadı. Teşekkürler...");
             if(this.getEnemy().getName().equals("Zombi")) this.getPlayer().getInventory().setFood(true);
             if(this.getEnemy().getName().equals("Vampir")) this.getPlayer().getInventory().setFirewood(true);
