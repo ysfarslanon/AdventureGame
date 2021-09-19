@@ -8,7 +8,7 @@ import Source.Player;
 
 public class Store extends SafeLocation {
     public Store(Player player) {
-        super("Mağaza", player);
+        super("Dükkan", player);
     }
 
     @Override
@@ -47,6 +47,7 @@ public class Store extends SafeLocation {
     public void printWeapons(){
         System.out.println("\n######### SİLAHLAR #########");
         System.out.println("0 - Çıkış");
+        printPlayerMoney();
         for (Weapon w: Weapon.weapons()) {
             System.out.println("ID: "+w.getID()+" - "+w.getName()+", Hasar: "+w.getDamage()+", Fiyat: "+w.getPrice());
         }
@@ -85,6 +86,7 @@ public class Store extends SafeLocation {
     public void printArmors(){
         System.out.println("\n######### ZIRHLAR #########");
         System.out.println("0 - Çıkış");
+        printPlayerMoney();
         for (Armor a: Armor.armors()) {
             System.out.println("ID: "+a.getID()+" - "+a.getName()+", Engelleme: "+a.getBlock()+", Fiyat: "+a.getPrice());
         }
@@ -92,7 +94,7 @@ public class Store extends SafeLocation {
     }
 
     public void buyArmor(){
-        System.out.println("Zırh seçimi: ");
+        System.out.print("Zırh seçimi: ");
         int selectedArmorID= input.nextInt();
         while (selectedArmorID<0 || selectedArmorID >Armor.armors().length){
             System.out.print("Geçersiz değer girdin. Lütfen tekrar dener misin? ");
@@ -118,5 +120,8 @@ public class Store extends SafeLocation {
         }
     }//buyArmor
 
+    public void printPlayerMoney(){
+        System.out.println("Paran: " + this.getPlayer().getMoney());
+    }
 
 }

@@ -8,19 +8,19 @@ Locations
           Özellik:Karakter özelliklerini geliştirebilecek eşyalar satın alınabilir.(Silah-Zırh)
 
 2 - BattleLocation (Savaş alanları)
-    1.1 - Cave (Mağara)
+    2.1 - Cave (Mağara)
           Özellik: 1 - 3 adet Zombie oluşur.
           Ödül: Food (Yemek) kazanılır.
 
-    1.2 - Forest (Orman)
+    2.2 - Forest (Orman)
           Özellik: 1 - 3 adet Vampire oluşur.
           Ödül: Firewood (Odun) kazanılır.
 
-    1.3 - River (Nehir)
+    2.3 - River (Nehir)
           Özellik: 1 - 3 adet Bear oluşur.
           Ödül: Water (Su) kazanılır.
 
-    1.4 - Mine (Maden)
+    2.4 - Mine (Maden)
           Özellik: 1 - 5 adet Snake oluşur.
           Ödül: Silah, Zırh, Para veya hiçbir şey kazanma ihtimali
 

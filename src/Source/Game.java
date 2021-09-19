@@ -24,7 +24,7 @@ public  class Game {
         System.out.println("\n########### Mekanlar ###########");
         System.out.println("0 - Gerçek dünya");
         System.out.println("1 - Güvenli ev (Burada yaralar sarılır ve iyileşirsin.)");
-        System.out.println("2 - Mağaza (Burada kendini geliştirebileceğin aletler bulabilirsin.)");
+        System.out.println("2 - Dükkan (Burada kendini geliştirebileceğin aletler bulabilirsin.)");
         System.out.println("3 - Mağara (Zombilerin yer aldığını ıssız ve karanlık mekan. ÖDÜL:YEMEK)");
         System.out.println("4 - Orman (Vampirlerin dolaştığını mekan. ÖDÜL:ODUN)");
         System.out.println("5 - Nehir (Ayıların koruduğu kutsal bir mekan. ÖDÜL:SU)");
