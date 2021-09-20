@@ -7,6 +7,9 @@ Locations
     1.2 - Store (Dükkan/Mağaza)
           Özellik:Karakter özelliklerini geliştirebilecek eşyalar satın alınabilir.(Silah-Zırh)
 
+    1.3 - HelpCenter (Yardım merkezi)
+          Özellik:Oyun hakkında bütün bilgileri edinebileceğin mekan.
+
 2 - BattleLocation (Savaş alanları)
     2.1 - Cave (Mağara)
           Özellik: 1 - 3 adet Zombie oluşur.
