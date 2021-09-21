@@ -5,6 +5,7 @@ import Locations.BattleLocations.Forest;
 import Locations.BattleLocations.Mine;
 import Locations.BattleLocations.River;
 import Locations.Location;
+import Locations.SafeLocations.InfoCenter;
 import Locations.SafeLocations.SafeHouse;
 import Locations.SafeLocations.Store;
 import java.util.Scanner;
@@ -12,13 +13,6 @@ import java.util.Scanner;
 public  class Game {
     private static Scanner input=new Scanner(System.in);
 
-    public static String login(){
-        System.out.println("\nMetin tabanlı macera oyununa hoşgeldin");
-        System.out.print("Lütfen sana nasıl hitap edeceğimi söylermisin? : ");
-        String nickname= "yusuf";//input.nextLine();
-        System.out.println("\nSelam "+nickname+". Hadi devam edelim. Şimdi bir karakter seçmen gerekiyor");
-        return nickname;
-    }
 
     public static void menu(){
         System.out.println("\n########### Mekanlar ###########");
@@ -29,7 +23,17 @@ public  class Game {
         System.out.println("4 - Orman (Vampirlerin dolaştığını mekan. ÖDÜL:ODUN)");
         System.out.println("5 - Nehir (Ayıların koruduğu kutsal bir mekan. ÖDÜL:SU)");
         System.out.println("6 - Maden (Her bir yılanı alt ettiğinde silah, zırh, para veya hiçbir şey kazanamama şansın olan bir mekan.)");
+        System.out.println("7 - Bilgi merkezi (Burada savaş yok sadece oyun hakkında bilgilerin aktarıldığı bir mekan.)");
     }
+
+    public static String login(){
+        System.out.println("\nMetin tabanlı macera oyununa hoşgeldin");
+        System.out.print("Lütfen sana nasıl hitap edeceğimi söylermisin? : ");
+        String nickname= input.nextLine().toUpperCase();
+        System.out.println("\nSelam " + nickname + ". Hadi devam edelim. Şimdi bir karakter seçmen gerekiyor");
+        return nickname;
+    }
+
     public static void start(){
         Player player=new Player(login());
         player.selectCharacter();
@@ -37,8 +41,8 @@ public  class Game {
         while(true){
             menu();
             System.out.print("Yolculuk nereye: ");
-            int selectLocation=input.nextInt();
-            while (selectLocation<0 || selectLocation>7){
+            int selectLocation = input.nextInt();
+            while (selectLocation < 0 || selectLocation > 7){
                 System.out.println("Geçersiz değer girdin. Lütfen tekrar dener misin?");
                 selectLocation= input.nextInt();
             }
@@ -57,6 +61,8 @@ public  class Game {
                 location=new River(player);
             else if(selectLocation==6)
                 location=new Mine(player);
+            else if(selectLocation==7)
+                location=new InfoCenter(player);
             else{
                 System.out.println("Burada düşman kalmadı... Güvenli eve yönlendiriliyorsun");
                 location=new SafeHouse(player);
@@ -66,6 +72,7 @@ public  class Game {
                 System.out.println("Tekrar görüşmek üzere");
                 break;
             }
+
             if (!location.onLocation()){
                 System.out.println("Öldün");
                 break;
